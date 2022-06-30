@@ -5,3 +5,9 @@
     border-radius: 12px;
     background-color: black;
 }
+.error-text {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 800;
+}
