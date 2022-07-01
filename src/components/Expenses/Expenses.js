@@ -4,11 +4,13 @@ import ExpensesFilter from "./ExpenseFilter/ExpenseFilter";
 import "./Expenses.css";
 const Expenses = (props) => {
   const [selectedYear, setSelectedYear] = useState("2020");
-  const filteredList = props.expenses.filter(
+  let filteredList = props.expenses.filter(
     (e) => e.date.getFullYear().toString() === selectedYear
   );
+  if (selectedYear === "all") {
+    filteredList = props.expenses;
+  }
   const filterChangeHandler = (selectedYear) => {
-    console.log(selectedYear);
     setSelectedYear(selectedYear);
   };
 
@@ -18,7 +20,7 @@ const Expenses = (props) => {
         onFilterChange={filterChangeHandler}
         selected={selectedYear}
       />
-      {filteredList.length == 0 && (
+      {filteredList.length === 0 && (
         <p className="error-text">No expense found !!</p>
       )}
       {filteredList.length > 0 &&
